@@ -1,0 +1,14 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5433/contacts
+    username: user
+    password: 123
+    hikari:
+      schema: contact_schema
+
+app:
+  init-contact:
+    enable: ${INIT_ENABLE:false}

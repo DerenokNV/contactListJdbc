@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  postgres-contact:
+    image: postgres:13.3
+    container_name: postgresContact
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=contacts
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql

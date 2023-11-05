@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title th:if="${typeAction == 'create'}">Создание контакта</title>
+    <title th:unless="${typeAction == 'create'}">Редактирование контакта</title>
+    <style>
+      div.field {
+        padding-bottom: 5px;
+      }
+      div.field label {
+        display: block;
+        float: left;
+        width: 70px;
+        height: 15px;
+      }
+    </style>
+</head>
+<body>
+
+<h1 th:if="${typeAction == 'create'}">Создание контакта</h1>
+<h1 th:unless="${typeAction == 'create'}">Редактирование контакта</h1>
+
+<form th:action="'/contact/' + ${typeAction}" method="post">
+    <input type="hidden" id="id" name="id" required th:value="${contact.id}">
+    <div class="field">
+        <label for="firstName">Имя:</label>
+        <input type="text" id="firstName" name="firstName" required th:value="${contact.firstName}">
+    </div>
+    <div class="field">
+        <label for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" name="lastName" required th:value="${contact.lastName}">
+    </div>
+    <div class="field">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required th:value="${contact.email}">
+    </div>
+    <div class="field">
+        <label for="phone">Телефон:</label>
+        <input type="text" id="phone" name="phone" required th:value="${contact.phone}">
+    </div>
+    <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>
